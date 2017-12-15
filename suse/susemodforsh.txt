@@ -1,0 +1,102 @@
+#old#
+function installrhel7 {
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            # Repodata 
+            sudo yum makecache fast > /dev/null 2>&1
+            # Register the Microsoft RedHat repository
+            curl -s https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+            # Install PowerShell
+            sudo yum install -y powershell
+            sleep 1
+            echo $i
+        done
+    } | whiptail --title "PowerShell Core Installer" --gauge "Installing PowerShell Core for RHEL 7" 6 60 0
+    end
+    
+ #newOpensuse#   
+ function installopensuseleap {
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            # Repodata 
+            sudo zypper ref > /dev/null 2>&1
+            # Register the Microsoft RedHat repository
+            curl -s https://packages.microsoft.com/config/opensuse/42.2/prod.repo | sudo tee /etc/zypp/repos.d/microsoft.repo
+            # Install PowerShell
+            sudo zypper in --non-interactive powershell
+            sleep 1
+            echo $i
+        done
+    } | whiptail --title "PowerShell Core Installer" --gauge "Installing PowerShell Core for Opensuse Leap" 6 60 0
+    end
+    
+ #newSLES12#
+ 
+  function installsles12 {
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            # Repodata 
+            sudo zypper ref > /dev/null 2>&1
+            # Register the Microsoft RedHat repository
+            curl -s https://packages.microsoft.com/config/sles/12/prod.repo | sudo tee /etc/zypp/repos.d/microsoft.repo
+            # Install PowerShell
+            sudo zypper in --non-interactive powershell
+            sleep 1
+            echo $i
+        done
+    } | whiptail --title "PowerShell Core Installer" --gauge "Installing PowerShell Core for SLES 12" 6 60 0
+    end
+    
+ #newSLES11#
+  function installopensuseleap {
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            # Repodata 
+            sudo zypper ref > /dev/null 2>&1
+            # Register the Microsoft RedHat repository
+            curl -s https://packages.microsoft.com/config/sles/11/prod.repo | sudo tee /etc/zypp/repos.d/microsoft.repo
+            # Install PowerShell
+            sudo zypper in --non-interactive powershell
+            sleep 1
+            echo $i
+        done
+    } | whiptail --title "PowerShell Core Installer" --gauge "Installing PowerShell Core for SLES 11" 6 60 0
+    end
+    
+ #old#
+ function rpmAzInstall { 
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/azure-cli.repo'
+            yum check-update > /dev/null 2>&1
+            sudo yum install azure-cli -y
+            sleep 1
+            echo $i
+        done
+        } | whiptail --title "PowerShell Core Installer" --gauge "Installing Azure CLI 2.0 for RPM" 6 60 0
+
+#new#
+function rpmAzInstall {
+    {
+        for ((i=0; i<=100; i+=20)); do
+            # sudo -S - auth sudo in advance
+            sudo -S <<< $psw ls > /dev/null 2>&1
+            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            sudo sh -c 'echo -e "[azure-cli]\nname=Azure CLI\nbaseurl=https://packages.microsoft.com/yumrepos/azure-cli\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/zypper/repos.d/azure-cli.repo'
+            zypper ref > /dev/null 2>&1
+            sudo zypper in --non-interactive azure-cli 
+            sleep 1
+            echo $i
+        done
+        } | whiptail --title "PowerShell Core Installer" --gauge "Installing Azure CLI 2.0 for RPM" 6 60 0
