@@ -205,7 +205,8 @@ function about {
     Core and optional components if desired.
     For additional details see: https://github.com/jldeen/pwshcore
     
-    Modded by Mirppc for use with SUSE based distros https://github.com/Mirppc/pwshcore
+    Modded by Mirppc for use with SUSE based distros 
+    For more info look at: https://github.com/Mirppc/pwshcore
     " 35 70 35
 }
 function end {
