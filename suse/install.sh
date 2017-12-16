@@ -1,6 +1,6 @@
  #!/bin/bash
 # script version
-ver=1.0
+ver=1.0 build 572651343 rev 8
 # passwd capture function
 function capturePass {
     # password capture
